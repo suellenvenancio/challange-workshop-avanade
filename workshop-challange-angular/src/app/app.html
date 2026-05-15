@@ -1,0 +1,82 @@
+<div class="min-h-screen bg-gray-100 p-10">
+
+  <div class="max-w-3xl mx-auto">
+
+    <div class="bg-white rounded-2xl shadow p-8">
+
+      <h1 class="text-3xl font-bold mb-6">
+        Cadastrar de Itens
+      </h1>
+
+      <div class="space-y-4">
+
+        <input
+          type="text"
+          name="name"
+          placeholder="Nome"
+          [(ngModel)]="item.name"
+          class="w-full border rounded-xl p-3"
+        />
+
+        <input
+          type="text"
+          name="category"
+          placeholder="Categoria"
+          [(ngModel)]="item.category"
+          class="w-full border rounded-xl p-3"
+        />
+
+        <input
+          type="number"
+          name="quantity"
+          placeholder="Quantidade"
+          [(ngModel)]="item.quantity"
+          class="w-full border rounded-xl p-3"
+        />
+        <button
+          (click)="saveItem()"
+          [disabled]="!item.name || !item.category || !item.quantity"
+          class="bg-blue-600 hover:bg-blue-700 disabled:opacity-50 text-white px-6 py-3 rounded-xl"
+        >
+          Salvar
+        </button>
+
+      </div>
+
+    </div>
+
+    <div class="mt-8 bg-white rounded-2xl shadow p-8">
+
+      <h2 class="text-2xl font-bold mb-4">
+        Lista de Itens
+      </h2>
+
+      <div class="space-y-4">
+
+        @for (itemList of items; track itemList) {
+
+          <div class="border rounded-xl p-4">
+
+            <h3 class="font-semibold">
+              {{ itemList.name }}
+            </h3>
+
+             <p class="text-gray-500">
+               {{ itemList.category }}
+            </p>
+
+            <p class="text-gray-500">
+              quantidade: {{ itemList.quantity }}
+            </p>
+
+          </div>
+
+        }
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

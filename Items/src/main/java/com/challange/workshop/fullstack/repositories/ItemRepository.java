@@ -1,0 +1,12 @@
+package com.challange.workshop.fullstack.repositories;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+import com.challange.workshop.fullstack.models.Item;
+
+@Repository
+public interface ItemRepository extends JpaRepository<Item, Long> {
+
+   
+}
