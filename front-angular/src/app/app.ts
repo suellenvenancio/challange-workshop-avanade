@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Item, ItemResponse } from '../models/item';
 import { ItemService } from '../service/item.service';
@@ -21,16 +21,18 @@ export class App implements OnInit {
   };
 
   constructor(
-    private itemService: ItemService
+    private itemService: ItemService,
+    private cd: ChangeDetectorRef
   ) {}
 
   ngOnInit(): void {
     this.loadItems();
   }
 
- loadItems() {
+loadItems() {
   this.itemService.getItems().subscribe(data => {
-    this.items = [...data];
+    this.items = data ?? [];
+    this.cd.detectChanges();
   });
 }
 
